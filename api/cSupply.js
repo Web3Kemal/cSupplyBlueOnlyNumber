@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     const airdropSupply = await getAirdropSupply();
     const circulatingSupply = totalSupply - lpSupply - airdropSupply;
     const circulatingSupplyNumber = Number(circulatingSupply) / 10**18; // Assume 18 decimal places
-    res.send(circulatingSupplyNumber.toFixed(8)); // Send as text
+    res.status(200).json(circulatingSupplyNumber);
   } catch (err) {
     console.error(err);
     res.status(500).send("Error fetching data");
